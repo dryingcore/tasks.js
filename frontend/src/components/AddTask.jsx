@@ -1,5 +1,5 @@
-import { PropTypes } from "prop-types";
-import { Box, Button, TextField } from "@mui/material";
+import PropTypes from "prop-types";
+import { Box, Button, TextField, FormControlLabel, Checkbox } from "@mui/material";
 import { useEffect, useState } from "react";
 import { updateTask, createTask } from "../api";
 
@@ -13,6 +13,10 @@ export default function AddTask({ currentTask, setCurrentTask, refreshTasks }) {
 			setTitle(currentTask.title);
 			setDescription(currentTask.description);
 			setCompleted(currentTask.completed);
+		} else {
+			setTitle("");
+			setDescription("");
+			setCompleted(false);
 		}
 	}, [currentTask]);
 
@@ -35,7 +39,7 @@ export default function AddTask({ currentTask, setCurrentTask, refreshTasks }) {
 		<Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2 }} onSubmit={handleSubmit}>
 			<TextField label="Title" value={title} onChange={e => setTitle(e.target.value)} variant="outlined" required />
 			<TextField label="Description" value={description} onChange={e => setDescription(e.target.value)} variant="outlined" multiline rows={4} required />
-
+			<FormControlLabel control={<Checkbox checked={completed} onChange={e => setCompleted(e.target.checked)} />} label="Completed" />
 			<Button variant="contained" type="submit">
 				{currentTask ? "Update Task" : "Add Task"}
 			</Button>
