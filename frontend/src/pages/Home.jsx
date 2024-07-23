@@ -1,10 +1,11 @@
-import AddTask from "../components/AddTask";
+import { Container, Typography } from "@mui/material";
 
 export default function Home() {
 	return (
-		<div>
-			<h1>Home</h1>
-			<AddTask />
-		</div>
+		<Container>
+			<Typography variant="h4" gutterBottom>
+				Task Manager
+			</Typography>
+		</Container>
 	);
 }
