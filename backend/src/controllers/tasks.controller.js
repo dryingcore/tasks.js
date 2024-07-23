@@ -12,7 +12,7 @@ exports.getTasks = async (req, res) => {
 exports.createTask = async (req, res) => {
 	const task = new Tasks({
 		title: req.body.title,
-		description: req.body.description
+		description: req.body.description,
 	});
 
 	try {
@@ -22,3 +22,7 @@ exports.createTask = async (req, res) => {
 		res.status(400).json({ message: error.message });
 	}
 };
+
+exports.updateTask = async (req, res) => {
+	
+}
