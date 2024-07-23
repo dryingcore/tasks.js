@@ -1,5 +1,6 @@
 import { Container, Paper, Typography } from "@mui/material";
 import AddTask from "../components/AddTask";
+import ListTask from "../components/ListTask";
 import { getTasks } from "../api";
 import { useEffect, useState } from "react";
 
@@ -23,6 +24,9 @@ export default function Home() {
 			</Typography>
 			<Paper sx={{ padding: 2 }}>
 				<AddTask currentTask={currentTask} setCurrentTask={setCurrentTask} refreshTasks={fetchTasks} />
+			</Paper>
+			<Paper sx={{ marginTop: 2, padding: 2 }}>
+				<ListTask tasks={tasks} setCurrentTask={setCurrentTask} deleteTask={fetchTasks} />
 			</Paper>
 		</Container>
 	);
