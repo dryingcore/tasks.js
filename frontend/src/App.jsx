@@ -1,12 +1,7 @@
-import { Box, Container } from "@mui/material";
-import AddTask from "./components/addTask";
+import { ThemeProvider } from "@mui/material";
+
+import { theme } from "./theme";
 
 export default function App() {
-	return (
-		<Container>
-			<Box>
-				<AddTask />
-			</Box>
-		</Container>
-	);
+	return <ThemeProvider theme={theme}></ThemeProvider>;
 }
