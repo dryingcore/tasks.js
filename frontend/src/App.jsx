@@ -1,7 +1,11 @@
+import { Box, Container } from "@mui/material";
+
 export default function App() {
 	return (
-		<div>
-			<h1>Hello World</h1>
-		</div>
+		<Container>
+			<Box>
+				<h1>App</h1>
+			</Box>
+		</Container>
 	);
 }
