@@ -1,16 +1,21 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Container, Typography, Paper } from "@mui/material";
+import { getTasks, deleteTask } from "../api";
 import AddTask from "../components/AddTask";
 import ListTask from "../components/ListTask";
-import { deleteTask, getTasks } from "../api";
-import { useEffect, useState } from "react";
 
-export default function Home() {
+const Home = () => {
 	const [tasks, setTasks] = useState([]);
 	const [currentTask, setCurrentTask] = useState(null);
 
 	const fetchTasks = async () => {
-		const tasks = await getTasks();
-		setTasks(tasks.data);
+		const response = await getTasks();
+		setTasks(response.data);
+	};
+
+	const handleDeleteTask = async id => {
+		await deleteTask(id);
+		fetchTasks();
 	};
 
 	useEffect(() => {
@@ -26,8 +31,10 @@ export default function Home() {
 				<AddTask currentTask={currentTask} setCurrentTask={setCurrentTask} refreshTasks={fetchTasks} />
 			</Paper>
 			<Paper sx={{ marginTop: 2, padding: 2 }}>
-				<ListTask tasks={tasks} setCurrentTask={setCurrentTask} deleteTask={deleteTask} />
+				<ListTask tasks={tasks} setCurrentTask={setCurrentTask} deleteTask={handleDeleteTask} />
 			</Paper>
 		</Container>
 	);
-}
+};
+
+export default Home;
