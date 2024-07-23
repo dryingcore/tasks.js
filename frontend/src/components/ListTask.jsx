@@ -1,23 +1,24 @@
 import PropTypes from "prop-types";
 import { IconButton, List, ListItem, ListItemSecondaryAction, ListItemText } from "@mui/material";
-import { DeleteIcon, EditIcon } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 export default function ListTask({ tasks, setCurrentTask, deleteTask }) {
 	return (
 		<List>
-			{tasks.map(tasks => {
-				<ListItem key={tasks._id}>
-					<ListItemText primary={tasks.title} secondary={tasks.description} />
+			{tasks.map(task => (
+				<ListItem key={task._id}>
+					<ListItemText primary={task.title} secondary={task.description} />
 					<ListItemSecondaryAction>
-						<IconButton edge="end" aria-label="edit" onClick={() => setCurrentTask(tasks)}>
+						<IconButton edge="end" aria-label="edit" onClick={() => setCurrentTask(task)}>
 							<EditIcon />
 						</IconButton>
-						<IconButton edge="end" aria-label="delete" onClick={() => deleteTask(tasks._id)}>
+						<IconButton edge="end" aria-label="delete" onClick={() => deleteTask(task._id)}>
 							<DeleteIcon />
 						</IconButton>
 					</ListItemSecondaryAction>
-				</ListItem>;
-			})}
+				</ListItem>
+			))}
 		</List>
 	);
 }
