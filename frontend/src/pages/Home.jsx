@@ -1,4 +1,5 @@
-import { Container, Typography } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
+import AddTask from "../components/AddTask";
 
 export default function Home() {
 	return (
@@ -6,6 +7,9 @@ export default function Home() {
 			<Typography variant="h4" gutterBottom>
 				Task Manager
 			</Typography>
+			<Paper sx={{ padding: 2 }}>
+				<AddTask />
+			</Paper>
 		</Container>
 	);
 }
