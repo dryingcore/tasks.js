@@ -8,3 +8,16 @@ exports.getTasks = async (req, res) => {
 		res.status(404).json({ message: error.message });
 	}
 };
+
+exports.createTask = async (req, res) => {
+	const task = new Tasks({
+		title: req.body.title,
+	});
+
+	try {
+		const newTask = await task.save();
+		res.status(201).json(newTask);
+	} catch (error) {
+		res.status(400).json({ message: error.message });
+	}
+};
