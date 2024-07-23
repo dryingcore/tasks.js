@@ -1,8 +1,9 @@
+import { Box, TextField } from "@mui/material";
+
 export default function AddTask() {
 	return (
-		<form>
-			<input type="text" placeholder="Title" required />
-			<input type="text" placeholder="Description" required />
-		</form>
+		<Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+			<TextField label="Title" variant="outlined" required />
+		</Box>
 	);
 }
