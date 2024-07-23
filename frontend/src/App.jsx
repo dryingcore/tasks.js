@@ -1,6 +1,6 @@
 import { Container, ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "./theme"; // Certifique-se de que a exportação está correta
-import AddTask from "./components/AddTask"; 
+import theme from "./theme";
+import AddTask from "./components/AddTask";
 
 export default function App() {
 	return (
